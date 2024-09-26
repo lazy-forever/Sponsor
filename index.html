@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="./img/myicon1000.jpg" type="image/x-icon">
+
+    <style type="text/css">
+        body {
+
+            padding: 0;
+            margin: 0 auto;
+            background-color: rgb(41, 42, 43);
+            color: rgb(232, 232, 232);
+        }
+
+        #footer {
+            height: 40px;
+            line-height: 40px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            background: #333;
+            color: #fff;
+            font-family: Arial;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .content {
+            height: 1800px;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <title>打赏</title>
+    <style type="text/css">
+        .hide_box {
+            z-index: 999;
+            filter: alpha(opacity=50);
+            background: #666;
+            -moz-opacity: 0.5;
+            opacity: 0.5;
+            left: 0;
+            top: 0;
+            height: 99%;
+            width: 100%;
+            position: fixed;
+            display: none;
+        }
+
+        .hide_box1 {
+            z-index: 999;
+            filter: alpha(opacity=50);
+            background: #666;
+            -moz-opacity: 0.5;
+            opacity: 0.5;
+            left: 0;
+            top: 0;
+            height: 99%;
+            width: 100%;
+            position: fixed;
+            display: none;
+        }
+
+        .shang_box {
+            width: 540px;
+            height: 540px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 10px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            top: 50%;
+            margin-left: -280px;
+            margin-top: -280px;
+            border: 1px dotted #dedede;
+            display: none;
+        }
+
+        .shang_box1 {
+            width: 540px;
+            height: 540px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 10px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            top: 50%;
+            margin-left: -280px;
+            margin-top: -280px;
+            border: 1px dotted #dedede;
+            display: none;
+        }
+
+        .shang_box img {
+            border: none;
+            border-width: 0;
+        }
+
+        .dashang {
+            display: block;
+            width: 200px;
+            margin: 5px auto;
+            height: 25px;
+            line-height: 25px;
+            padding: 10px;
+            background-color: #E74851;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .dashang:hover {
+            opacity: 0.8;
+            padding: 15px;
+            font-size: 18px;
+        }
+
+        .shang_close {
+            float: right;
+            display: inline-block;
+        }
+
+        .shang_logo {
+            display: block;
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        .shang_tit {
+            width: 100%;
+            height: 75px;
+            text-align: center;
+            line-height: 66px;
+            color: #a3a3a3;
+            font-size: 16px;
+            background: url('./img/cy-reward-title-bg.jpg');
+            font-family: 'Microsoft YaHei';
+            margin-top: 7px;
+            margin-right: 2px;
+        }
+
+        .shang_tit p {
+            color: #a3a3a3;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .shang_payimg {
+            width: 210px;
+            padding: 10px;
+            border: 6px solid #EA5F00;
+            margin: 0 auto;
+            border-radius: 3px;
+            height: 200px;
+        }
+
+        .shang_payimg img {
+            display: block;
+            text-align: center;
+        }
+
+        .pay_explain {
+            text-align: center;
+            margin: 10px auto;
+            font-size: 12px;
+            color: #545454;
+        }
+
+        .radiobox {
+            width: 16px;
+            height: 16px;
+            background: url('./img/radio2.jpg');
+            display: block;
+            float: left;
+            margin-top: 5px;
+            margin-right: 14px;
+        }
+
+        .checked .radiobox {
+            background: url('./img/radio1.jpg');
+        }
+
+        .shang_payselect {
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 40px;
+            cursor: pointer;
+            height: 60px;
+            width: 280px;
+            display: flex;
+        }
+
+        .shang_payselect .pay_item {
+            display: inline-block;
+            margin-right: 10px;
+            float: left;
+        }
+
+        .shang_info {
+            clear: both;
+        }
+
+        .shang_info p,
+        .shang_info a {
+            color: #C3C3C3;
+            text-align: center;
+            font-size: 12px;
+            text-decoration: none;
+            line-height: 2em;
+        }
+
+        hr {
+            width: 100%;
+            clear: both;
+            border-top-width: 1px;
+            border-top-style: solid;
+            border-bottom-style: solid;
+            border-top-color: #CCCCCC;
+            border-bottom-color: #FFFFFF;
+        }
+
+        .donate {
+            text-align: center;
+            color: #9a9a9a;
+            font-size: 18px;
+            margin: 70px auto;
+            padding: 15px 0 5px;
+        }
+
+        .donatebtn {
+            background-color: #f15c5c;
+            border-radius: 4px;
+            color: #fff;
+            display: inline-block;
+            padding: 8px 50px;
+            font-size: 18px;
+            text-decoration: none;
+            border-bottom: none;
+            margin: 7px auto 28px;
+        }
+
+        .introduce {
+            color: rgb(197, 197, 197);
+        }
+
+        .introduce h1 {
+            margin-bottom: 20px;
+        }
+
+        .introduce p {
+            margin: 20px 0;
+        }
+
+        .projects::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .projects::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background: rgb(32, 33, 34);
+        }
+
+        .projects::-webkit-scrollbar-track {
+            border-radius: 10px;
+            background: rgb(55, 57, 58);
+        }
+
+        .projects {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            margin: 30px 0;
+            font-size: 0.95rem;
+            padding: 10px 0;
+        }
+
+        .introduce>.projects {
+            justify-content: center;
+        }
+
+        .projects>a {
+            display: block;
+            min-width: 210px;
+            width: 230px;
+            margin-right: 10px;
+            position: relative;
+            background-color: rgb(32, 33, 34);
+            padding: 10px 20px 10px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            -ms-border-radius: 10px;
+            -o-border-radius: 10px;
+            border-radius: 10px;
+            color: rgb(197, 197, 197);
+            -webkit-transition: all 0.2s;
+            -moz-transition: all 0.2s;
+            -ms-transition: all 0.2s;
+            -o-transition: all 0.2s;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .projects>a:hover {
+            background-color: rgb(55, 57, 58);
+            -webkit-transform: translateY(-5px);
+            -moz-transform: translateY(-5px);
+            -ms-transform: translateY(-5px);
+            -o-transform: translateY(-5px);
+            transform: translateY(-5px);
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        }
+
+        .projects .star {
+            position: absolute;
+            top: 80px;
+            right: 10px;
+            margin: 0;
+        }
+
+        .projects .description {
+            margin-top: 10px;
+            margin-right: 10px;
+            font-size: 0.8rem;
+            color: rgb(155, 155, 155);
+        }
+
+        .shang_payselect {
+            display: flex;
+            justify-content: center;
+            /* 水平居中 */
+            align-items: center;
+            /* 垂直居中（如果需要） */
+        }
+
+        .pay_item_en {
+            margin: 0 10px;
+            /* 设置每个支付项之间的间距 */
+        }
+
+        .logo {
+            text-align: center;
+        }
+
+        .logo:hover {
+            transform: rotate(360deg);
+            transition: transform 1s;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="logo">
+        <img src="./img/myicon1000.jpg" alt="lazy_forever" width="100">
+    </div>
+    <div id="dcontainer">
+
+        <div class="donate">
+
+            <div class="introduce">
+                <h1>我是 lazy_forever</h1>
+                <div class="projects centered"></div>
+                <p>热衷于研究自己喜欢的事情</p>
+                <!-- <p>目前做过的一些开源项目：</p>
+                <div class="projects">
+                    <a href="https://github.com/lazy-forever/Fake-news-detection" target="_blank" rel="noopener">
+                        <p>虚假新闻检测</p>
+                        <p class="description">南开大学《python语言程序设计》大作业</p>
+                        <p class="star">⭐️ 14</p>
+                    </a>
+                    <a href="https://github.com/lazy-forever/某某某-某某某某某" target="_blank" rel="noopener">
+                        <p>某某某</p>
+                        <p class="description">针对某某大学某某系统的某某某某</p>
+                        <p class="star">⭐️ 2</p>
+                    </a>
+                </div> -->
+            </div>
+            <p>感谢各位的打赏与支持!</p>
+
+
+            <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">打赏支持(国内)</a></p>
+            <div class="hide_box"></div>
+            <div class="shang_box">
+                <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭"><img
+                        src="./img/close.jpg" alt="取消" /></a>
+
+                <div class="shang_tit">
+                    <p>感谢支持，这些钱都将会运用到开源项目！!</p>
+                </div>
+                <div class="shang_payimg">
+                    <img src="./img/alipayimg.png" alt="扫码支持" title="扫一扫" width="210" height="210" />
+                </div>
+                <div class="pay_explain">扫码打赏，你说多少就多少</div>
+                <div class="shang_payselect">
+                    <div class="pay_item checked" data-id="alipay">
+                        <span class="radiobox"></span>
+                        <span class="pay_logo"><img src="./img/alipay.jpg" alt="支付宝" /></span>
+                    </div>
+                    <div class="pay_item" data-id="weipay">
+                        <span class="radiobox"></span>
+                        <span class="pay_logo"><img src="./img/wechat.jpg" alt="微信" /></span>
+                    </div>
+                </div>
+                <div class="shang_info">
+                    <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+
+                </div>
+            </div>
+            <p><a href="javascript:void(0)" onclick="dashangToggle1()" class="dashang" title="打赏，支持一下">打赏支持(国际)</a></p>
+            <div class="hide_box1"></div>
+            <div class="shang_box1">
+                <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle1()" title="关闭"><img
+                        src="./img/close.jpg" alt="取消" /></a>
+
+                <div class="shang_tit">
+                    <p>感谢支持，这些钱都将会运用到开源项目！!</p>
+                </div>
+                <div class="shang_payimg_en">
+                    <!-- <img src="./img/alipayimg.png" alt="扫码支持" title="扫一扫" width="210" height="210" /> -->
+                    <p>0x4bFaFc4D49D3d9cde998F15cBb245B9ED3ab990A</p>
+                </div>
+                <div class="pay_explain">转账打赏，你说多少就多少</div>
+                <div class="shang_payselect">
+                    <div class="pay_item_en checked" data-id="eth">
+                        <span class="radiobox"></span>
+                        <span class="pay_logo"><img src="./img/eth.png" alt="eth" height="30px" /></span>
+                    </div>
+                    <div class="pay_item_en" data-id="btc">
+                        <span class="radiobox"></span>
+                        <span class="pay_logo"><img src="./img/btc.png" alt="btc" height="30px" /></span>
+                    </div>
+                </div>
+                <div class="shang_info">
+                    <p>使用<span id="shang_pay_txt_en">ETH</span>链，即可进行转账打赏哦</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script type="text/javascript">
+        $(function () {
+            $(".pay_item").click(function () {
+                $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+                var dataid = $(this).attr('data-id');
+                $(".shang_payimg img").attr("src", "./img/" + dataid + "img.png");
+                $("#shang_pay_txt").text(dataid == "alipay" ? "支付宝" : "微信");
+            });
+        });
+        $(function () {
+            $(".pay_item_en").click(function () {
+                $(this).addClass('checked').siblings('.pay_item_en').removeClass('checked');
+                var dataid = $(this).attr('data-id');
+                $(".shang_payimg_en p").text(dataid == "eth" ? "0x4bFaFc4D49D3d9cde998F15cBb245B9ED3ab990A" : "暂未更新");
+                $("#shang_pay_txt_en").text(dataid == "eth" ? "ETH" : "BTC");
+            });
+        });
+        function dashangToggle() {
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+        }
+        function dashangToggle1() {
+            $(".hide_box1").fadeToggle();
+            $(".shang_box1").fadeToggle();
+        }
+    </script>
+
+    <div id="footer">Copyright © 2024 lazy_forever. All rights reserved. </div>
+</body>
+
+</html>
