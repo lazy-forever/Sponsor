@@ -422,7 +422,7 @@
                 </div>
                 <div class="shang_payimg_en">
                     <!-- <img src="./img/alipayimg.png" alt="扫码支持" title="扫一扫" width="210" height="210" /> -->
-                    <p>0x4bFaFc4D49D3d9cde998F15cBb245B9ED3ab990A</p>
+                    <p>0x2d4aFAdED54d2F10be037e5D4C76fecB7aF35C75</p>
                 </div>
                 <div class="pay_explain">转账打赏，你说多少就多少</div>
                 <div class="shang_payselect">
@@ -458,7 +458,7 @@
             $(".pay_item_en").click(function () {
                 $(this).addClass('checked').siblings('.pay_item_en').removeClass('checked');
                 var dataid = $(this).attr('data-id');
-                $(".shang_payimg_en p").text(dataid == "eth" ? "0x4bFaFc4D49D3d9cde998F15cBb245B9ED3ab990A" : "暂未更新");
+                $(".shang_payimg_en p").text(dataid == "eth" ? "0x2d4aFAdED54d2F10be037e5D4C76fecB7aF35C75" : "暂未更新");
                 $("#shang_pay_txt_en").text(dataid == "eth" ? "ETH" : "BTC");
             });
         });
