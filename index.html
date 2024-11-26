@@ -354,7 +354,12 @@
 </head>
 
 <body>
-
+    <div style="display: none;">
+        <img src="./img/alipayimg.png" alt="预加载图片">
+        <img src="./img/wechatimg.png" alt="预加载图片">
+        <img src="./img/eth.png" alt="预加载图片">
+        <img src="./img/btc.png" alt="预加载图片">
+    </div>
     <div class="logo">
         <img src="./img/myicon1000.jpg" alt="lazy_forever" width="100">
     </div>
@@ -373,9 +378,9 @@
                         <p class="description">南开大学《python语言程序设计》大作业</p>
                         <p class="star">⭐️ 14</p>
                     </a>
-                    <a href="https://github.com/lazy-forever/某某某-某某某某某" target="_blank" rel="noopener">
-                        <p>某某某</p>
-                        <p class="description">针对某某大学某某系统的某某某某</p>
+                    <a href="https://github.com/lazy-forever/xxx-xxxxx" target="_blank" rel="noopener">
+                        <p>某某大学某某脚本</p>
+                        <p class="description">针对某某大学xxxxx系统的某某脚本</p>
                         <p class="star">⭐️ 2</p>
                     </a>
                 </div> -->
@@ -459,7 +464,7 @@
                 $(this).addClass('checked').siblings('.pay_item_en').removeClass('checked');
                 var dataid = $(this).attr('data-id');
                 $(".shang_payimg_en p").text(dataid == "eth" ? "0x5202875b828293e6C47790B859E82a9e4C258E18" : "bc1p4s2lw87gred4y7d0hcslkvfvu6dxwplawf9dve6yzlz83turp4qq6wtp0t");
-                $("#shang_pay_txt_en").text(dataid == "eth" ? "ETH" : "BTC");
+                $("#shang_pay_txt_en").text(dataid == "eth" ? "ETH(ERC20)" : "BTC");
             });
         });
         function dashangToggle() {
